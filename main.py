@@ -5,7 +5,7 @@ def cpu_intensive_task(iterations):
     """CPU密集型任务 - 用于测试GIL影响"""
     total = 0
     for i in range(iterations):
-        total += i * 2
+        total += (i * i) ** 0.5  # 更复杂的计算
     return total
 
 def single_thread_test(total_iterations):
@@ -36,7 +36,7 @@ def multi_thread_test(total_iterations, thread_count):
     return time.perf_counter() - start_time
 
 def main():
-    total_iterations = 100_000_000
+    total_iterations = 1000000000
     thread_counts = [1, 2, 4, 8]
     
     print(f"迭代次数: {total_iterations:,}")
